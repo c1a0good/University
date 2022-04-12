@@ -1,0 +1,11 @@
+D:\Work\Students\Students.Models\bin\Debug\net5.0\Students.Models.deps.json
+D:\Work\Students\Students.Models\bin\Debug\net5.0\Students.Models.dll
+D:\Work\Students\Students.Models\bin\Debug\net5.0\ref\Students.Models.dll
+D:\Work\Students\Students.Models\bin\Debug\net5.0\Students.Models.pdb
+D:\Work\Students\Students.Models\obj\Debug\net5.0\Students.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\Students\Students.Models\obj\Debug\net5.0\Students.Models.AssemblyInfoInputs.cache
+D:\Work\Students\Students.Models\obj\Debug\net5.0\Students.Models.AssemblyInfo.cs
+D:\Work\Students\Students.Models\obj\Debug\net5.0\Students.Models.csproj.CoreCompileInputs.cache
+D:\Work\Students\Students.Models\obj\Debug\net5.0\Students.Models.dll
+D:\Work\Students\Students.Models\obj\Debug\net5.0\ref\Students.Models.dll
+D:\Work\Students\Students.Models\obj\Debug\net5.0\Students.Models.pdb

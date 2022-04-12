@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "551d8fae-5f40-427c-ac59-fec2c5ca5235": {
+      "ProjectGuid": "551d8fae-5f40-427c-ac59-fec2c5ca5235",
+      "DisplayName": "Students",
+      "ColorIndex": 0
+    },
+    "414ba933-d68d-4ba9-84b4-3ab721b2d04c": {
+      "ProjectGuid": "414ba933-d68d-4ba9-84b4-3ab721b2d04c",
+      "DisplayName": "Students.Data",
+      "ColorIndex": 1
+    },
+    "6be062b0-7467-4f8a-9b98-6413d9510548": {
+      "ProjectGuid": "6be062b0-7467-4f8a-9b98-6413d9510548",
+      "DisplayName": "Students.Models",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

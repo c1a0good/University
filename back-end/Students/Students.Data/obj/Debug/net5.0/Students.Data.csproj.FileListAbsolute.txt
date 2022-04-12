@@ -1,0 +1,14 @@
+D:\Work\Students\Students.Data\bin\Debug\net5.0\Students.Data.deps.json
+D:\Work\Students\Students.Data\bin\Debug\net5.0\Students.Data.runtimeconfig.json
+D:\Work\Students\Students.Data\bin\Debug\net5.0\Students.Data.runtimeconfig.dev.json
+D:\Work\Students\Students.Data\bin\Debug\net5.0\Students.Data.dll
+D:\Work\Students\Students.Data\bin\Debug\net5.0\ref\Students.Data.dll
+D:\Work\Students\Students.Data\bin\Debug\net5.0\Students.Data.pdb
+D:\Work\Students\Students.Data\obj\Debug\net5.0\Students.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\Students\Students.Data\obj\Debug\net5.0\Students.Data.AssemblyInfoInputs.cache
+D:\Work\Students\Students.Data\obj\Debug\net5.0\Students.Data.AssemblyInfo.cs
+D:\Work\Students\Students.Data\obj\Debug\net5.0\Students.Data.csproj.CoreCompileInputs.cache
+D:\Work\Students\Students.Data\obj\Debug\net5.0\Students.Data.dll
+D:\Work\Students\Students.Data\obj\Debug\net5.0\ref\Students.Data.dll
+D:\Work\Students\Students.Data\obj\Debug\net5.0\Students.Data.pdb
+D:\Work\Students\Students.Data\obj\Debug\net5.0\Students.Data.genruntimeconfig.cache
