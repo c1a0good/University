@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -35,10 +36,15 @@ public class StatementService {
 
     public void start() throws JsonProcessingException {
         log.info("Start receiving...");
-
-        ResponseEntity<Specialty[]> response =
-                restTemplate.getForEntity(SPEC_URL, Specialty[].class);
-        List<Specialty> specialties = Arrays.stream(response.getBody()).toList();
+        List<Specialty> specialties = Collections.emptyList();
+        try {
+            ResponseEntity<Specialty[]> response =
+                    restTemplate.getForEntity(SPEC_URL, Specialty[].class);
+            specialties = Arrays.stream(response.getBody()).toList();
+        }
+        catch (Exception e) {
+            log.warn(e.getMessage());
+        }
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -49,7 +55,12 @@ public class StatementService {
             List<Statement> statements = getBySpec(specialty.getId());
             for (int i = 0; i < count; i++) {
                 request = new HttpEntity<String>(objectMapper.writeValueAsString(statements.get(i)), headers);
-                restTemplate.postForLocation(STUD_URL, request);
+                try {
+                    restTemplate.postForLocation(STUD_URL, request);
+                }
+                catch (Exception e) {
+                    log.warn(e.getMessage());
+                }
             }
         }
     }

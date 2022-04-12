@@ -17,7 +17,6 @@ public class Plan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    @JsonIgnore
     private Integer id;
 
     @Column(name = "specialty_id")

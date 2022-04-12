@@ -1,6 +1,5 @@
 package com.src.receivingCompany.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -18,7 +17,6 @@ public class Statement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    @JsonIgnore
     private Integer id;
     @JsonProperty("FirstName")
     @Column(name = "first_name")
