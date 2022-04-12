@@ -3,7 +3,9 @@ package com.project.curriculum.controller;
 import com.project.curriculum.domain.Specialty;
 import com.project.curriculum.service.SpecialtyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -30,9 +32,10 @@ public class SpecialtyController {
         return specialtyService.createSpecialty(specialty);
     }
 
-    @PostMapping("/{id}")
-    public void updateSpecialty(Specialty specialty) {
-        specialtyService.updateSpecialty(specialty);
+    @PutMapping("/{id}")
+    public void updateSpecialty(@PathVariable Long id, Specialty specialty) {
+        if (specialty.getId() == id) specialtyService.updateSpecialty(specialty);
+        else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")

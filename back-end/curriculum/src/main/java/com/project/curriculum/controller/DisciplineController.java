@@ -3,7 +3,10 @@ package com.project.curriculum.controller;
 import com.project.curriculum.domain.Discipline;
 import com.project.curriculum.service.DisciplineService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -25,14 +28,15 @@ public class DisciplineController {
         return disciplineService.getDisciplineById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public Discipline addNewDiscipline(Discipline discipline) {
         return disciplineService.createDiscipline(discipline);
     }
 
-    @PostMapping("/{id}")
-    public void updateDiscipline(Discipline discipline) {
-        disciplineService.updateDiscipline(discipline);
+    @PutMapping("/{id}")
+    public void updateDiscipline(@PathVariable Long id, Discipline discipline) {
+        if (discipline.getId() == id) disciplineService.updateDiscipline(discipline);
+        else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")

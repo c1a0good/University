@@ -1,5 +1,7 @@
 package com.project.curriculum.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class Discipline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @OneToMany(mappedBy = "discipline", cascade = CascadeType.REMOVE)
+    @JsonManagedReference
     private List<SpecialtyDiscipline> disciplineSpecialties;
     private String name;
 

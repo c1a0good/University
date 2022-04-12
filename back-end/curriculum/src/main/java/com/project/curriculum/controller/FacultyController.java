@@ -3,7 +3,9 @@ package com.project.curriculum.controller;
 import com.project.curriculum.domain.Faculty;
 import com.project.curriculum.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -25,14 +27,15 @@ public class FacultyController {
         return facultyService.getFacultyById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public Faculty addNewFaculty(Faculty faculty) {
         return facultyService.createFaculty(faculty);
     }
 
-    @PostMapping("/{id}")
-    public void updateFaculty(Faculty faculty) {
-        facultyService.updateFaculty(faculty);
+    @PutMapping("/{id}")
+    public void updateFaculty(@PathVariable Long id, Faculty faculty) {
+        if (faculty.getId() == id) facultyService.updateFaculty(faculty);
+        else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
