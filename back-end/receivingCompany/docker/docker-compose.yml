@@ -3,9 +3,9 @@ version: '2'
 services:
   postgres:
     image: 'postgres:latest'
-    container_name: db
+    container_name: db1
     ports:
-        - "5432:5432"
+        - "5434:5432"
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
@@ -19,7 +19,7 @@ services:
       - "8082:8082"
     restart: always
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/receiving
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db1:5432/receiving
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
