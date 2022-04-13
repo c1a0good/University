@@ -1,7 +1,9 @@
 package com.project.curriculum.service.implementation;
 
 import com.project.curriculum.domain.Discipline;
+import com.project.curriculum.domain.SpecialtyDiscipline;
 import com.project.curriculum.repository.DisciplineRepository;
+import com.project.curriculum.repository.SpecialtyDisciplineRepository;
 import com.project.curriculum.service.DisciplineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class DisciplineServiceImpl implements DisciplineService {
 
     @Autowired
     private DisciplineRepository disciplineRepository;
+
+    @Autowired
+    private SpecialtyDisciplineRepository specialtyDisciplineRepository;
 
     @Override
     public Discipline createDiscipline(Discipline discipline) {
@@ -44,6 +49,11 @@ public class DisciplineServiceImpl implements DisciplineService {
     @Override
     public void deleteDisciplinesByIds(List<Long> ids) {
         disciplineRepository.deleteAllById(ids);
+    }
+
+    @Override
+    public List<SpecialtyDiscipline> getAllSpecDisByDis(Discipline discipline) {
+        return specialtyDisciplineRepository.getAllByDiscipline(discipline);
     }
 
 }

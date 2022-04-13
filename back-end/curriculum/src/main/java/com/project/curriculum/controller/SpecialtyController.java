@@ -1,11 +1,10 @@
 package com.project.curriculum.controller;
 
 import com.project.curriculum.domain.Specialty;
+import com.project.curriculum.domain.SpecialtyDiscipline;
 import com.project.curriculum.service.SpecialtyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -27,15 +26,21 @@ public class SpecialtyController {
         return specialtyService.getSpecialtyById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public Specialty addNewSpecialty(Specialty specialty) {
         return specialtyService.createSpecialty(specialty);
     }
 
+    @PostMapping("/{id}/disciplines")
+    public SpecialtyDiscipline addNewDisciplineInSpecialty(@PathVariable Long id, SpecialtyDiscipline specialtyDiscipline) {
+        specialtyDiscipline.setSpecialty(specialtyService.getSpecialtyById(id));
+        return specialtyService.createSpecDis(specialtyDiscipline);
+    }
+
     @PutMapping("/{id}")
     public void updateSpecialty(@PathVariable Long id, Specialty specialty) {
-        if (specialty.getId() == id) specialtyService.updateSpecialty(specialty);
-        else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        specialty.setId(id);
+        specialtyService.updateSpecialty(specialty);
     }
 
     @DeleteMapping("/{id}")
@@ -43,9 +48,14 @@ public class SpecialtyController {
         specialtyService.deleteSpecialtyById(id);
     }
 
-    @DeleteMapping
-    public void deleteSpecialtiesByIds(List<Long> ids) {
-        specialtyService.deleteSpecialtiesByIds(ids);
+    @DeleteMapping("/{id}/disciplines")
+    public void deleteAllDisciplinesInSpecialty(@PathVariable Long id) {
+        specialtyService.deleteSpecialtyDisciplinesBySpecialty(specialtyService.getSpecialtyById(id));
+    }
+
+    @DeleteMapping("/{specId}/disciplines/{disId}")
+    public void deleteDisciplineInSpecialtyById(@PathVariable Long disId) {
+        specialtyService.deleteSpecialtyDisciplineById(disId);
     }
 
 }
