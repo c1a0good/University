@@ -1,6 +1,5 @@
 package com.src.receivingCompany.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -18,16 +17,12 @@ public class Statement {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @JsonProperty("FirstName")
     @Column(name = "first_name")
     private String firstName;
-    @JsonProperty("SecondName")
     @Column(name = "second_name")
     private String secondName;
-    @JsonProperty("SpecialtyId")
     @Column(name = "specialty_id")
     private Integer specialtyId;
-    @JsonProperty("Semester")
-    @Column(name = "semester")
-    private Integer semester;
+    @Column(name = "course")
+    private Integer course;
 }

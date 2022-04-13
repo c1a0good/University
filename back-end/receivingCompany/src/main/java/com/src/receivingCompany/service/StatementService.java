@@ -54,6 +54,9 @@ public class StatementService {
             Integer count = planService.getBySpec(specialty.getId()).getCount();
             List<Statement> statements = getBySpec(specialty.getId());
             for (int i = 0; i < count; i++) {
+                if (count >= specialties.size()) {
+                    break;
+                }
                 request = new HttpEntity<String>(objectMapper.writeValueAsString(statements.get(i)), headers);
                 try {
                     restTemplate.postForLocation(STUD_URL, request);
