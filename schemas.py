@@ -14,16 +14,18 @@ class StudentBase(BaseModel):
 
 class StudentServer(BaseModel):
     id: int
-    first_name: str
-    second_name: str
-    IsExpelled: bool
-
+    firstName: str
+    secondName: str
+    isExpelled: bool
+    specialtyId:int
+    course: int
 
 class StudentInfo((BaseModel)):
     id: int
-    first_name: str
-    second_name: str
-    IsExpelled: bool
+    firstName: str
+    secondName: str
+    isExpelled: bool
+    course:int
 
 class UserBase(BaseModel):
     username:str

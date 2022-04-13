@@ -38,7 +38,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme),auth:Auth=Depends
 
 
 
-CAST_SERVICE_HOST_URL = 'http://localhost:8000/students'
+CAST_SERVICE_HOST_URL = 'http://localhost:8081/students'
 url = os.environ.get('CAST_SERVICE_HOST_URL') or CAST_SERVICE_HOST_URL
 
 
@@ -49,7 +49,7 @@ url = os.environ.get('CAST_SERVICE_HOST_URL') or CAST_SERVICE_HOST_URL
 
 def student_list():
     try:
-        r = httpx.get(f'{url}/list')
+        r = httpx.get(f'{url}/')
     except:
         raise HTTPException(staus_code=505)
 
@@ -59,9 +59,8 @@ def student_list():
 
 
 def student_id(id:int):
-    print(id)
     try:
-      r = httpx.get(f'{url}/server/{id}')
+      r = httpx.get(f'{url}/{id}')
       print(r.json())
     except r.extensions:
         raise r.extensions
@@ -72,8 +71,7 @@ def student_id(id:int):
 def student_id_post(id:int=Body(...)):
 
     try:
-      r = httpx.get(f'{url}/server/{id}')
-      print(r.json())
+      r = httpx.get(f'{url}/{id}')
     except r.extensions:
         raise r.extensions
 
