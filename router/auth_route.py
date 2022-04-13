@@ -27,12 +27,12 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), users: UserRep
     db_user = users.find_by_username(form_data.username)
 
     if not db_user:
-        raise HTTPException(status=status.HTTP_401_UNAUTHORIZED,
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Invalid username",
                             headers={"WWW-Authenticate": "Bearer"}, )
 
     if not auth.verify_password(form_data.password, db_user.hashed_password):
-        raise HTTPException(status=status.HTTP_401_UNAUTHORIZED,
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                             detail="Invalid password",
                             headers={"WWW-Authenticate": "Bearer"}, )
 
