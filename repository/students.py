@@ -23,11 +23,15 @@ class StudentRepository:
         query = self.db.query(Student)
         return query.offset(skip).all()
 
-    def delete_student(self, id: int)->StudentBase:
+    def delete_student(self, id: int) -> StudentBase:
         query = self.db.query(Student)
-        return query.filter(Student.id == id).delete()
+        i = query.filter(Student.id == id).one()
+        self.db.delete(i)
+        self.db.commit()
 
-    def create(self, id: int,first_name: str, second_name:str) -> Student:
+        return i
+
+    def create(self, id: int, first_name: str, second_name: str) -> Student:
         db_user = Student(  # **user.dict()
             id=id,
             first_name=first_name,
@@ -40,7 +44,7 @@ class StudentRepository:
 
         return db_user
 
-    def create_BaseStudent(self,resident:StudentBase):
+    def create_BaseStudent(self, resident: StudentBase):
         db_user = Student(  # **user.dict()
             id=resident.id,
             first_name=resident.first_name,
@@ -52,4 +56,3 @@ class StudentRepository:
         self.db.refresh(db_user)
 
         return db_user
-

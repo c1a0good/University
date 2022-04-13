@@ -2,7 +2,7 @@ from functools import lru_cache
 from sqlalchemy.orm import Session
 import config
 import database
-from fastapi import Depends,HTTPException
+from fastapi import Depends,HTTPException,Body
 from fastapi.security import OAuth2PasswordBearer
 from auth import Auth
 import os
@@ -59,6 +59,18 @@ def student_list():
 
 
 def student_id(id:int):
+    print(id)
+    try:
+      r = httpx.get(f'{url}/server/{id}')
+      print(r.json())
+    except r.extensions:
+        raise r.extensions
+
+    return r.json()
+
+
+def student_id_post(id:int=Body(...)):
+
     try:
       r = httpx.get(f'{url}/server/{id}')
       print(r.json())
