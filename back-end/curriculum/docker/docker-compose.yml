@@ -1,0 +1,26 @@
+version: '3'
+services:
+  mysql:
+    image: 'mysql:latest'
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=curriculum
+      - MYSQL_PASSWORD=root
+    ports:
+      - "5432:3306"
+  curriculum:
+    image: 'docker-spring-boot-mysql'
+    build:
+      context: .
+    container_name: curriculum
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/curriculum
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    restart: always
